@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/estilos.css">
+    <!-- font styles -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="imagens/logotipo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Pedir Orçamento | Mar de Limpeza</title>
+</head>
+<body>
+    <header>
+        <img class="logo" src="imagens/logotipo.png" alt="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#">Sobre Nós</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="index.html#contact">Contato</a></li>
+            </ul>
+        </nav>
+        <div>
+            <button class="whatsapp">Falar no WhatsApp</button>
+            <a href="orcamento.html" class="orcamento">Pedir um orçamento</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="container simulador simulador-pagina">
+            <h2>Simulação e Pedidos</h2>
+            <p class="simulador-subtitulo">Calcule o Preço do Seu Serviço</p>
+
+            <div class="simulador-card">
+                <div class="simulador-tabs">
+                    <button type="button" class="tab-btn active" data-tab="simulacao">Simulação</button>
+                    <button type="button" class="tab-btn" data-tab="orcamento">Orçamento</button>
+                </div>
+
+                <form id="formSimulador" class="simulador-form">
+                    <div class="campo campo-servicos">
+                        <label>Tipo de Serviço</label>
+                        <div class="servicos-chips">
+                            <button type="button" class="chip active" data-servico="Diaristas" data-preco="350">Diaristas</button>
+                            <button type="button" class="chip" data-servico="Limpeza Profunda" data-preco="550">Limpeza Profunda</button>
+                            <button type="button" class="chip" data-servico="Pós-Obra" data-preco="700">Pós-Obra</button>
+                            <button type="button" class="chip" data-servico="Estofos e Vidros" data-preco="450">Estofos e Vidros</button>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="dimensao">Dimensão (m²)</label>
+                        <input type="number" id="dimensao" name="dimensao" min="1" placeholder="Ex: 150" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="tipoEspaco">Tipo de Espaço</label>
+                        <select id="tipoEspaco" name="tipoEspaco" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="1">Residencial</option>
+                            <option value="1.2">Comercial</option>
+                            <option value="1.5">Industrial</option>
+                            <option value="1.1">Condomínio</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="intensidade">Intensidade</label>
+                        <select id="intensidade" name="intensidade" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="0.9">Leve</option>
+                            <option value="1">Moderada</option>
+                            <option value="1.3">Intensa</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="sujidade">Nível de Sujidade</label>
+                        <select id="sujidade" name="sujidade" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="0.9">Baixo</option>
+                            <option value="1">Médio</option>
+                            <option value="1.25">Alto</option>
+                            <option value="1.5">Muito Alto</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-simular">Ver Resultado da Simulação</button>
+                    <p class="simulador-aviso">O resultado detalhado da sua simulação aparece logo abaixo.</p>
+                </form>
+
+                <div id="resultadoSimulacao" class="resultado-simulacao">
+                    <h3>Resultado da Simulação</h3>
+                    <ul class="resultado-lista">
+                        <li><span>Serviço</span><strong id="resServico"></strong></li>
+                        <li><span>Dimensão</span><strong id="resDimensao"></strong></li>
+                        <li><span>Tipo de Espaço</span><strong id="resEspaco"></strong></li>
+                        <li><span>Intensidade</span><strong id="resIntensidade"></strong></li>
+                        <li><span>Nível de Sujidade</span><strong id="resSujidade"></strong></li>
+                    </ul>
+                    <div class="resultado-total">
+                        <span>Valor Estimado</span>
+                        <strong id="resTotal">0 Kz</strong>
+                    </div>
+                    <p class="resultado-obs">*Valor aproximado. O orçamento final pode variar após vistoria.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="contact-overlay">
+                <form id="formContato" class="contact-form">
+                    <h1>Entre já em contacto</h1>
+                    <p class="contact-subtitulo">Envie a sua mensagem e respondemos por email o mais rápido possível.</p>
+
+                    <div class="campo">
+                        <label for="contatoNome">Nome completo</label>
+                        <input type="text" id="contatoNome" name="nome" placeholder="O seu nome" required>
+                    </div>
+
+                    <div class="contact-linha">
+                        <div class="campo">
+                            <label for="contatoEmail">Email</label>
+                            <input type="email" id="contatoEmail" name="email" placeholder="voce@email.com" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="contatoTelefone">Telefone</label>
+                            <input type="tel" id="contatoTelefone" name="telefone" placeholder="+244 900 000 000">
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="contatoAssunto">Assunto</label>
+                        <select id="contatoAssunto" name="assunto">
+                            <option value="Pedido de orçamento">Pedido de orçamento</option>
+                            <option value="Dúvida sobre serviços">Dúvida sobre serviços</option>
+                            <option value="Reclamação">Reclamação</option>
+                            <option value="Outro assunto">Outro assunto</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="contatoMensagem">Mensagem</label>
+                        <textarea id="contatoMensagem" name="mensagem" rows="4" placeholder="Escreva a sua mensagem..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-simular">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+    <p>&copy; 2026 Mar de Limpeza. Todos os direitos reservados.</p>
+    </footer>
+
+    <script type="module" src="scripts/orcamento.js"></script>
+</body>
+</html>
