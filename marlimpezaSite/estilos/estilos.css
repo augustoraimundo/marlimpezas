@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f3f3f3;
@@ -60,6 +65,42 @@ nav a:hover::after{
     width: 90px;
 }
 
+.menu-toggle{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 501;
+}
+
+.menu-toggle span{
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #013b78;
+    border-radius: 2px;
+}
+
+.nav-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-actions{
+    display: flex;
+    gap: 10px;
+}
+
+.nav-backdrop{
+    display: none;
+}
+
 .whatsapp {
     background-color: #25D366;
     color: white;
@@ -85,12 +126,14 @@ nav a:hover::after{
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
+    padding: 0 20px;
+    text-align: center;
 }
 
 .hero div{
@@ -130,6 +173,7 @@ nav a:hover::after{
 .container {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .sobre-destaque{
@@ -224,10 +268,9 @@ nav a:hover::after{
 
  h2::after{
     content: '';
-    width: 500px;
+    flex: 1 1 40px;
     height: 1px;
     background-color: #013b7839;
-    display: inline-block;
     margin-left: 15px;
 }
 
@@ -720,4 +763,219 @@ article .size-6{
 .contact-form textarea:focus{
     outline: none;
     border-color: #007BFF;
+}
+
+/* ==========================================================
+   Responsividade
+   ========================================================== */
+
+@media (max-width: 992px){
+    header{
+        padding: 15px 20px;
+    }
+
+    .menu-toggle{
+        display: flex;
+    }
+
+    .nav-wrapper{
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: min(300px, 80%);
+        background-color: white;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 15px;
+        padding: 100px 30px 30px;
+        transform: translate3d(100%, 0, 0);
+        transition: transform .3s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+        z-index: 500;
+    }
+
+    .nav-wrapper.open{
+        transform: translate3d(0, 0, 0);
+    }
+
+    .nav-wrapper nav{
+        width: 100%;
+    }
+
+    .nav-wrapper nav ul li{
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .header-actions{
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .header-actions button,
+    .header-actions a{
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-backdrop.open{
+        display: block;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 400;
+    }
+
+    h2{
+        font-size: 36px;
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+
+    .hero h1{
+        font-size: 18px;
+    }
+
+    .hero h1 mark{
+        font-size: 54px;
+    }
+
+    .sobre-destaque .servico{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .imagensSobre{
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .sobre-destaque .balde{
+        width: 220px;
+        height: 280px;
+    }
+
+    .sobre-destaque .moca{
+        width: 220px;
+        height: 340px;
+    }
+
+    .servicos-destaque div{
+        margin-right: 0;
+    }
+
+    .numbers article{
+        flex-wrap: wrap;
+        row-gap: 30px;
+    }
+
+    .numbers article > div{
+        flex: 1 1 40%;
+    }
+
+    .numero h1{
+        font-size: 70px;
+    }
+
+    .clientesDizem{
+        justify-content: center;
+    }
+
+    .simulador-pagina{
+        padding-top: 130px;
+    }
+
+    .contact-linha{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px){
+    header{
+        padding: 12px 15px;
+    }
+
+    .logo{
+        width: 70px;
+    }
+
+    .hero, .contact{
+        background-attachment: scroll;
+    }
+
+    h2{
+        font-size: 26px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 mark{
+        font-size: 38px;
+    }
+
+    .hero p{
+        font-size: 16px;
+    }
+
+    .sobre-destaque .balde,
+    .sobre-destaque .moca{
+        width: 45%;
+        height: 220px;
+        margin-right: 10px;
+    }
+
+    .servicos-destaque div{
+        width: 100%;
+    }
+
+    .motivos h1{
+        font-size: 19px;
+    }
+
+    .motivos h1 mark{
+        font-size: 26px;
+    }
+
+    .motivos p{
+        font-size: 15px;
+    }
+
+    .numbers article > div{
+        flex: 1 1 100%;
+    }
+
+    .numero h1{
+        font-size: 55px;
+    }
+
+    .depoiment{
+        width: 100%;
+        max-width: 320px;
+        margin-right: 0;
+    }
+
+    .simulador-card,
+    .contact-form{
+        padding: 22px;
+    }
+
+    .simulador-tabs{
+        flex-wrap: wrap;
+    }
+
+    .servicos-chips{
+        flex-direction: column;
+    }
+
+    .chip{
+        text-align: center;
+    }
+
+    .contact-form h1{
+        font-size: 24px;
+    }
 }
